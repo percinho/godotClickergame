@@ -1,4 +1,4 @@
-res://control.tscn
-res://upgrade_node.gd
-res://panel_container.gd
 res://control.gd
+res://control.tscn
+res://panel_container.gd
+res://upgrade3.gd

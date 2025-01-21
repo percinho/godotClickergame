@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvctyn42gq7yn"]
+[gd_scene load_steps=4 format=3 uid="uid://cvctyn42gq7yn"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_7sh36"]
 [ext_resource type="Script" path="res://panel_container.gd" id="3_45qo7"]
-[ext_resource type="Script" path="res://upgrade2.gd" id="3_xve3y"]
-[ext_resource type="Script" path="res://upgrade3.gd" id="4_52itq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cxuf3"]
 
@@ -36,14 +34,13 @@ offset_right = 699.0
 offset_bottom = 317.0
 text = "Click to Fish"
 
-[node name="update1" type="Panel" parent="." node_paths=PackedStringArray("upgradeLabel")]
+[node name="update1" type="Panel" parent="."]
 layout_mode = 1
 offset_left = 849.0
 offset_top = 302.0
 offset_right = 1081.0
 offset_bottom = 387.0
 script = ExtResource("3_45qo7")
-upgradeLabel = NodePath("cost")
 
 [node name="Button" type="Button" parent="update1"]
 layout_mode = 2
@@ -51,7 +48,6 @@ offset_left = 116.0
 offset_top = 40.0
 offset_right = 184.0
 offset_bottom = 72.0
-disabled = true
 text = "Buy"
 
 [node name="upgradeAmount" type="Label" parent="update1"]
@@ -69,14 +65,14 @@ offset_top = 42.0
 offset_right = 83.0
 offset_bottom = 74.0
 
-[node name="update2" type="Panel" parent="." node_paths=PackedStringArray("upgradeLabel2")]
+[node name="update2" type="Panel" parent="." node_paths=PackedStringArray("upgradeLabel")]
 layout_mode = 1
-offset_left = 850.0
-offset_top = 421.0
-offset_right = 1082.0
-offset_bottom = 506.0
-script = ExtResource("3_xve3y")
-upgradeLabel2 = NodePath("cost")
+offset_left = 853.0
+offset_top = 411.0
+offset_right = 1085.0
+offset_bottom = 496.0
+script = ExtResource("3_45qo7")
+upgradeLabel = NodePath("cost")
 
 [node name="Button" type="Button" parent="update2"]
 layout_mode = 2
@@ -92,41 +88,9 @@ offset_left = 13.0
 offset_top = 12.0
 offset_right = 110.0
 offset_bottom = 49.0
-text = "More boats"
+text = "Upgrade 2"
 
 [node name="cost" type="Label" parent="update2"]
-layout_mode = 2
-offset_left = 20.0
-offset_top = 42.0
-offset_right = 83.0
-offset_bottom = 74.0
-
-[node name="update3" type="Panel" parent="." node_paths=PackedStringArray("upgradeLabel3")]
-layout_mode = 1
-offset_left = 854.0
-offset_top = 536.0
-offset_right = 1086.0
-offset_bottom = 621.0
-script = ExtResource("4_52itq")
-upgradeLabel3 = NodePath("cost")
-
-[node name="Button" type="Button" parent="update3"]
-layout_mode = 2
-offset_left = 116.0
-offset_top = 40.0
-offset_right = 184.0
-offset_bottom = 72.0
-text = "Buy"
-
-[node name="upgradeAmount" type="Label" parent="update3"]
-layout_mode = 2
-offset_left = 13.0
-offset_top = 12.0
-offset_right = 110.0
-offset_bottom = 49.0
-text = "More bigger boats"
-
-[node name="cost" type="Label" parent="update3"]
 layout_mode = 2
 offset_left = 20.0
 offset_top = 42.0
@@ -136,4 +100,3 @@ offset_bottom = 74.0
 [connection signal="pressed" from="Main_button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="update1/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update1"), "upgrade3"]]
 [connection signal="pressed" from="update2/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update2"), "upgrade3"]]
-[connection signal="pressed" from="update3/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update3"), "upgrade3"]]
