@@ -12,11 +12,16 @@ func upgrade():
 	return fishMult
 
 func updateLabel() -> void:
-	print("we got here")
 	upgradeLabel2.text = "%d" %upgradeCost
 
 func returnCost():
 	return upgradeCost
+
+func reset() -> void:
+	upgradeCost = 50 
+	multiplier = 1.5
+	fishMult = 10
+	updateLabel()
 
 func buyButtonStatus(fish) -> void:
 	if fish >= upgradeCost:
@@ -26,8 +31,6 @@ func buyButtonStatus(fish) -> void:
 
  # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(self.upgradeCost)
-	print("test")
 	updateLabel()
 	add_to_group("update_buttons")
 

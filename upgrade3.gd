@@ -1,14 +1,6 @@
 #class_name childPanel
 extends Panel
 
-# Steps when you duplicate:
-# Copy script, then detach and attach the new one. 
-# Change values below
-# Change upgrade Label in var and func
-# Change button argument
-# Assign label variable
-# Change name of upgrade
-
 var upgradeCost : int = 500
 var multiplier : float = 1.5
 var fishMult : int = 100
@@ -20,11 +12,16 @@ func upgrade():
 	return fishMult
 
 func updateLabel() -> void:
-	print("we got here")
 	upgradeLabel3.text = "%d" %upgradeCost
 
 func returnCost():
 	return upgradeCost
+
+func reset() -> void:
+	upgradeCost = 500 
+	multiplier = 1.5
+	fishMult = 100
+	updateLabel()
 
 func buyButtonStatus(fish) -> void:
 	if fish >= upgradeCost:
@@ -34,8 +31,6 @@ func buyButtonStatus(fish) -> void:
 
  # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(self.upgradeCost)
-	print("test")
 	updateLabel()
 	add_to_group("update_buttons")
 
