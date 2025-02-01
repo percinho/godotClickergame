@@ -17,6 +17,7 @@ extends Control
 var baseMult: float = 1 # fish base multiplier, increased on Prestige
 var fishMultiplier: float = 1 # Ongoing fish mult, increased by upgrades
 var upgradeNodes = 0 # used on ready to collect up all the upgrade nodes
+var prestigeCost: int = 1500
 
 # Adds fish to the total
 func add_fish() -> void:
@@ -29,7 +30,7 @@ func update_label_text() -> void:
 
 # Returns current prestige multiplier
 func calculatePrestige():
-	var spam = floor(fish / 1500)
+	var spam = floor(fish / prestigeCost)
 	return spam
 
 # Carries out the prestige. 
@@ -39,6 +40,7 @@ func prestige() -> void:
 	baseMult += calculatePrestige()
 	fishMultiplier = baseMult
 	fish = 0
+	prestigeCost *= 1.5
 	update_label_text()
 	for i in upgradeNodes:
 		i.reset()
@@ -54,7 +56,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # Checks each upgrade node to see if the buy button should be enabled
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for i in upgradeNodes:
 		i.buyButtonStatus(fish)
 
@@ -65,7 +67,7 @@ func _on_button_pressed() -> void:
 
 # Button press for the Buy button on each upgrade
 # Each node should pass their own path in, plus cost. 
-func _on_node_button_pressed(path, updateNumber) -> void:
+func _on_node_button_pressed(path) -> void:
 	var thisNode = self.get_node(path)
 	fish -= thisNode.returnCost()
 	update_label_text()

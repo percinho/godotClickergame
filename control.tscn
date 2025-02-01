@@ -7,7 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_cxuf3"]
 
-[node name="root" type="Control" node_paths=PackedStringArray("prestigeLabel")]
+[node name="root" type="Control" node_paths=PackedStringArray("fishLabel", "prestigeLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7sh36")
+fishLabel = NodePath("Label")
 prestigeLabel = NodePath("multLabel")
 
 [node name="Label" type="Label" parent="."]
