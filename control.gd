@@ -18,6 +18,7 @@ var baseMult: float = 1 # fish base multiplier, increased on Prestige
 var fishMultiplier: float = 1 # Ongoing fish mult, increased by upgrades
 var upgradeNodes = 0 # used on ready to collect up all the upgrade nodes
 var prestigeCost: int = 1500
+var basePassive: int = 0
 
 # Adds fish to the total
 func add_fish() -> void:
@@ -77,3 +78,11 @@ func _on_node_button_pressed(path) -> void:
 	
 func _on_prestige_button_pressed() -> void:
 	prestige()
+
+
+func _on_passive_buy_button_pressed(path) -> void:
+	var thisNode = self.get_node(path)
+	fish -= thisNode.returnCost()
+	update_label_text()
+	basePassive += thisNode.upgrade()
+	thisNode.updateLabel()

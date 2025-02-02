@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738446922
-control.gd::GDScript::-1::1738446786::0::1::::Clicker<>Control<>::
-control.tscn::PackedScene::6252133050047603133::1738446786::0::1::::<><>::res://control.gd<>res://panel_container.gd<>res://upgrade2.gd<>res://upgrade3.gd
+::res://::1738495607
+control.gd::GDScript::-1::1738448460::0::1::::Clicker<>Control<>::
+control.tscn::PackedScene::6252133050047603133::1738448460::0::1::::<><>::res://control.gd<>res://panel_container.gd<>res://upgrade2.gd<>res://upgrade3.gd
 icon.svg::CompressedTexture2D::7495310012115526424::1738446786::1738446923::1::::<><>::
-panel_container.gd::GDScript::-1::1738446786::0::1::::<>Panel<>::
+panel_container.gd::GDScript::-1::1738446959::0::1::::<>Panel<>::
 upgrade2.gd::GDScript::-1::1738446786::0::1::::<>Panel<>::
 upgrade3.gd::GDScript::-1::1738446786::0::1::::<>Panel<>::

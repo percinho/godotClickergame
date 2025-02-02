@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvctyn42gq7yn"]
+[gd_scene load_steps=7 format=3 uid="uid://cvctyn42gq7yn"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_7sh36"]
+[ext_resource type="Script" path="res://passiveBase.gd" id="2_xkci6"]
 [ext_resource type="Script" path="res://panel_container.gd" id="3_45qo7"]
 [ext_resource type="Script" path="res://upgrade2.gd" id="3_xve3y"]
 [ext_resource type="Script" path="res://upgrade3.gd" id="4_52itq"]
@@ -149,8 +150,42 @@ offset_top = 42.0
 offset_right = 83.0
 offset_bottom = 74.0
 
+[node name="passive1" type="Panel" parent="." node_paths=PackedStringArray("upgradePassiveLabel")]
+layout_mode = 1
+offset_left = 58.0
+offset_top = 283.0
+offset_right = 290.0
+offset_bottom = 368.0
+script = ExtResource("2_xkci6")
+upgradePassiveLabel = NodePath("cost")
+
+[node name="Button" type="Button" parent="passive1"]
+layout_mode = 2
+offset_left = 116.0
+offset_top = 40.0
+offset_right = 184.0
+offset_bottom = 72.0
+disabled = true
+text = "Buy"
+
+[node name="upgradeAmount" type="Label" parent="passive1"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 110.0
+offset_bottom = 49.0
+text = "Fishing Boat"
+
+[node name="cost" type="Label" parent="passive1"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 42.0
+offset_right = 83.0
+offset_bottom = 74.0
+
 [connection signal="pressed" from="Main_button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_prestige_button_pressed"]
-[connection signal="pressed" from="update1/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update1"), "upgrade3"]]
-[connection signal="pressed" from="update2/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update2"), "upgrade3"]]
-[connection signal="pressed" from="update3/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update3"), "upgrade3"]]
+[connection signal="pressed" from="update1/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update1")]]
+[connection signal="pressed" from="update2/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update2")]]
+[connection signal="pressed" from="update3/Button" to="." method="_on_node_button_pressed" binds= [NodePath("update3")]]
+[connection signal="pressed" from="passive1/Button" to="." method="_on_passive_buy_button_pressed" binds= [NodePath("passive1")]]
