@@ -1,7 +1,7 @@
 class_name Clicker
 extends Control
 
-#TODO Add passive income upgrade
+#TODO Make passive income able to go quicker
 #TODO Could the upgrade be done in the node itself and it just
 # emit a signal with the number of fish to take off and mult to increase?
 
@@ -19,6 +19,7 @@ var fishMultiplier: float = 1 # Ongoing fish mult, increased by upgrades
 var upgradeNodes = 0 # used on ready to collect up all the upgrade nodes
 var prestigeCost: int = 1500
 var basePassive: int = 0
+var timeSinceLastPassive: float = 0
 
 # Adds fish to the total
 func add_fish() -> void:
@@ -40,6 +41,7 @@ func calculatePrestige():
 func prestige() -> void:
 	baseMult += calculatePrestige()
 	fishMultiplier = baseMult
+	basePassive = 0
 	fish = 0
 	prestigeCost *= 1.5
 	update_label_text()
@@ -56,8 +58,16 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# Once per second it adds the passive fish to the total fish
 # Checks each upgrade node to see if the buy button should be enabled
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	# print(delta)
+	timeSinceLastPassive += delta
+	# print(timeSinceLastPassive)
+	if timeSinceLastPassive > 1:
+		fish += basePassive
+		timeSinceLastPassive = 0
+		update_label_text()	
 	for i in upgradeNodes:
 		i.buyButtonStatus(fish)
 
@@ -67,7 +77,11 @@ func _on_button_pressed() -> void:
 	update_label_text()
 
 # Button press for the Buy button on each upgrade
-# Each node should pass their own path in, plus cost. 
+# Each node should pass their own node name in. 
+# gets the node from the name
+# Asks for the upgrade cost and subtratcs it from fish
+# Asks for the upgrade per click value and adds it to the multiplier
+# Call's the node's update label to make sure it has the new upgrade cost
 func _on_node_button_pressed(path) -> void:
 	var thisNode = self.get_node(path)
 	fish -= thisNode.returnCost()

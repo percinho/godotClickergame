@@ -1,4 +1,4 @@
 res://control.tscn
+res://passiveBase.gd
 res://panel_container.gd
 res://control.gd
-res://passiveBase.gd

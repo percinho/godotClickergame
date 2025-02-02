@@ -30,7 +30,7 @@ func buyButtonStatus(fish) -> void:
 		$Button.disabled = true
 
 func reset() -> void:
-	upgradeCost = 5 
+	upgradeCost = 2 
 	multiplier = 1.5
 	passiveFish = 1
 	updateLabel()
